@@ -1,8 +1,4 @@
-// // const {By, Key, Builder, WebElementCondition, until} = require("selenium-webdriver");
-// const {Browser} = require('selenium-webdriver');
-// const {suite} = require('selenium-webdriver/testing');
-// const firefox = require('selenium-webdriver/firefox');
-// // const assert = require("assert");
+const assert = require("assert");
 
 const {By, Key, Builder, until} = require("selenium-webdriver");
 require("geckodriver");
@@ -20,17 +16,20 @@ require("geckodriver");
                 }
             let textBox = driver.findElement(By.name("q"));
             textBox.sendKeys("Chocobo", Key.RETURN);
-            let chocoboButton = setInterval(function () {
-                driver.findElement(By.css(".XjRuUc.rBG7Lb.B28vwe"));
-                chocoboButton.click();
-            }, 2000)
+            await driver.wait(until.titleContains('Chocobo'), 10000);
+                let title = await driver.getTitle();
+                assert(title.includes('Chocobo'));
+            // let chocoboButton = setInterval(function () {
+            //     driver.findElement(By.css(".XjRuUc.rBG7Lb.B28vwe"));
+            //     chocoboButton.click();
+            // }, 2000)
 
 		} catch(e) {
 			console.log(e);
 
 		} finally {
-            setInterval(function(){
+            setTimeout(function(){
                 driver.quit();
-            }, 10000);
+            }, 4000);
 		}
 }())
