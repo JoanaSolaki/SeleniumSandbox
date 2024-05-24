@@ -16,6 +16,7 @@ require("geckodriver");
                 }
             let textBox = driver.findElement(By.name("q"));
             textBox.sendKeys("Chocobo", Key.RETURN);
+            
             await driver.wait(until.titleContains('Chocobo'), 10000);
                 let title = await driver.getTitle();
                 assert(title.includes('Chocobo'));
