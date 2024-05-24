@@ -8,12 +8,7 @@ require("geckodriver");
 
 		try {
             driver.get("https://github.com/");
-            // let acceptButton = await driver.wait(until.elementLocated(By.css('.QS5gu.sy4vM')), 5000);
-            //     if (acceptButton) {
-            //         await acceptButton.click();
-            //     } else {
-            //         console.log('Bouton tout accepter pas trouvée');
-            //     }
+            
             let signIn = driver.findElement(By.css(".HeaderMenu-link--sign-in"));
             signIn.click();
 
